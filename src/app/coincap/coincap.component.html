@@ -1,0 +1,8 @@
+let ws = new WebSocket('wss://ws.coincap.io/prices?assets=bitcoin,ethereum');
+
+ws.onmessage = (event) => {
+    let stockObject = JSON.parse(event.data);
+    console.log(stockObject.p);
+}
+
+fetch("api.coincap.io/v2/assets");
