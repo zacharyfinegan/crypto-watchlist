@@ -1,3 +1,31 @@
 <p>
     Profile
 </p>
+
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)"  novalidate>
+    <p>
+        <label for="coin">Enter the coin or token you would like to add to your watchlist.</label>
+
+        <input name="coin" ngModel required>
+
+        <button>
+            Submit 
+            <!-- (click)="onSubmit({chosenCoin})"  
+            name="chosenCoin">
+            Submit -->
+        </button>
+    </p>
+</form>
+
+
+<p>
+    {{watchlistText}} 
+</p>
+
+
+
+<!-- <p>
+    <input type="text" [(ngModel)]="coinDetails.name" placeholder="Name">
+    <button (click)="addCoin(coinDetails)">Enter Coin</button>
+</p> -->

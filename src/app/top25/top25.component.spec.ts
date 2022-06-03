@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CoincapComponent } from './coincap.component';
+import { Top25Component } from './top25.component';
 
-describe('CoincapComponent', () => {
-  let component: CoincapComponent;
-  let fixture: ComponentFixture<CoincapComponent>;
+describe('Top25Component', () => {
+  let component: Top25Component;
+  let fixture: ComponentFixture<Top25Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CoincapComponent ]
+      declarations: [ Top25Component ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CoincapComponent);
+    fixture = TestBed.createComponent(Top25Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

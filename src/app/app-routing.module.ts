@@ -7,10 +7,11 @@ import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
+  //{ path: '', redirectTo: 'home'},
   { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'header', component: HeaderComponent},
-  { path: 'about', component: AboutComponent}
+  { path: 'about', component: AboutComponent},
 ];
 
 @NgModule({
