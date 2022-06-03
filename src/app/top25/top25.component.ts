@@ -48,4 +48,14 @@ export class Top25Component implements OnInit {
       }
     });
   }
+//ADD COMMAS
+  convertMC(str: string): string {
+    return Math.round(parseFloat(str) * 100 / 100).toLocaleString();
+  }
+  convertPrice(str: string): number {
+    let num = (parseInt(str));
+    num.toFixed(3);
+    console.log(typeof num);
+    return num;
+  }
 }

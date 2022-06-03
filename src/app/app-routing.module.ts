@@ -7,7 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
-  //{ path: '', redirectTo: 'home'},
+  { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'header', component: HeaderComponent},

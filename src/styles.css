@@ -105,3 +105,25 @@ footer {
     color: #0088A9;
 }
 
+table {
+    /* background-color:rgb(67, 138, 161); */
+    margin-left: 1%;
+    margin-top: 1%;
+    width: 80%;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+tbody td {
+    padding: 6px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+tbody tr:nth-child(even) {
+}
+tbody tr:nth-child(odd) {
+
+}

@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit {
 //ATTEMPT AT A TEST FOR LOCAL PERSISTENCE
     // testPersistence() {
     //   let value = (localStorage.getItem("key"));
-    //   //console.log(value);
+    //   console.log(value);
     //   if (value == null) {
     //     localStorage.setItem("rank", this.watchlistText);
     //     alert("Hellow");
