@@ -1,10 +1,10 @@
-<p>
+<h1>
     Profile
-</p>
+</h1>
 
 
 <form #f="ngForm" (ngSubmit)="onSubmit(f)"  novalidate>
-    <p>
+    <h2>
         <label for="coin">Enter the coin or token you would like to add to your watchlist.</label>
 
         <input name="coin" ngModel required>
@@ -15,17 +15,30 @@
             name="chosenCoin">
             Submit -->
         </button>
-    </p>
+        <!-- {{watchlistText}}  -->
+    </h2>
 </form>
 
+<table>
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>CryptoCurrency</th>
+            <th>Symbol</th>
+            <th>Price</th>
+            <th>% Price Change 24h</th>
+            <th>Market Cap USD</th>
+        </tr>
+    </thead>
 
-<p>
-    {{watchlistText}} 
-</p>
-
-
-
-<!-- <p>
-    <input type="text" [(ngModel)]="coinDetails.name" placeholder="Name">
-    <button (click)="addCoin(coinDetails)">Enter Coin</button>
-</p> -->
+    <tbody>
+        <tr *ngFor="let coin of watchlist">
+            <th>{{coin["rank"]}}</th>
+            <td>{{coin["name"]}}</td>
+            <td>{{coin["symbol"]}}</td>
+            <td>{{"$" + convertPrice(coin["priceUsd"])}}</td>
+            <td>{{coin["changePercent24Hr"]}}</td>
+            <td>{{"$" + convertMC(coin["marketCapUsd"])}}</td>
+        </tr>
+    </tbody>
+</table>

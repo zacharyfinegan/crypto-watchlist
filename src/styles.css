@@ -38,6 +38,14 @@ h1 {
     margin-left: 10px;
 }
 
+h2 {
+    font-family: "Montserrat", sas-serif;
+    font-size: 16px;
+    font-weight: 10;
+    color: #0088A9;
+    margin-left: 23px;
+}
+
 .logo {
     cursor: pointer;
     font-family: "Montserrat", sas-serif;
@@ -75,6 +83,11 @@ button {
 
 button:hover {
     background-color: rgba(0,136,169,0.8);
+}
+
+input {
+    margin-left: 10px;
+    margin-right: 8px;
 }
 
 a {

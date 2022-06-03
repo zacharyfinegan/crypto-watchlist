@@ -24,8 +24,22 @@ export class ProfileComponent implements OnInit {
     ngOnInit(): void {
     }
 
+//TABLE CREATION
+//--------------------------
+//ADD COMMAS
+  convertMC(str: string): string {
+    return Math.round(parseFloat(str) * 100 / 100).toLocaleString();
+  }
+  convertPrice(str: string): number {
+    let num = (parseInt(str));
+    num.toFixed(3);
+    console.log(typeof num);
+    return num;
+  }
+//--------------------------
 
 
+//USER INPUT
 //--------------------------
 //PROCESSES USER INPUT
     chosenCoin: string = '';
