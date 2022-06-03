@@ -13,6 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { Top25Component } from './top25/top25.component';
+import { TableMakerComponent } from './table-maker/table-maker.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { Top25Component } from './top25/top25.component';
     FooterComponent,
     HeaderComponent,
     Top25Component,
+    TableMakerComponent,
   ],
   imports: [
     BrowserModule,

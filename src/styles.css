@@ -27,13 +27,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 10%;
+    padding: 25px 10%;
 }
 
 h1 {
     font-family: "Montserrat", sas-serif;
-    font-size: 20px;
+    font-size: 18px;
     color: #0088A9;
+    padding: 10px 10px;
 }
 
 .logo {
@@ -120,10 +121,4 @@ tbody td {
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
-}
-
-tbody tr:nth-child(even) {
-}
-tbody tr:nth-child(odd) {
-
 }
