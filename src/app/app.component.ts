@@ -13,6 +13,12 @@ export class AppComponent {
 
   title = 'liftoff';
 
-  constructor() {}
+  constructor(
+
+  ) {}
+
+  ngOnInit() {
+
+  }
 
 }
