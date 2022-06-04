@@ -8,7 +8,7 @@
     background-color: #24252A;
 }
 
-li, button {
+button {
     font-family: "Montserrat", sas-serif;
     font-weight: 500;
     font-size: 16px;
@@ -24,10 +24,10 @@ p {
 }
 
 header {
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 10%;
+    padding: 25px 10%; */
 }
 
 h1 {
@@ -51,29 +51,49 @@ h2 {
     font-family: "Montserrat", sas-serif;
     font-weight: 500;
     font-size: 20px;
-    color: #0088A9;
+    color: orange;
     text-decoration: none;
 }
 
-.nav_links {
+#navi {
+    font-size: 25;
+}
+
+nav ul {
+    font-size: 30px;
+    display: block;
+    max-width: 95%;
+    margin: 0 auto;
+    text-decoration: none;
     list-style: none;
 }
 
-.nav_links li {
-    display: inline-block;
-    padding: 0px 20px;
-}
-
-.nav_links li a {
-    transition: all 0.3s ease 0s;
-}
-
-.nav_links li a:hover {
+header nav ul li {
     color: #0088A9;
+    float: left;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-family: "Montserrat", sas-serif;
+    font-weight: 500;
+    text-align: center;
+    width: 33%;
 }
+
+a {
+    text-decoration: none;
+    color: orange;
+}
+
+#coinstop {
+    text-decoration: none;
+    color:red;
+}
+
+
 
 button {
-    padding: 9px 25px;
+    padding: 5px 15px;
+    font-size: 25px;
     background-color: rgba(0,136,169,1);
     border: none;
     border-radius: 50px;
@@ -85,37 +105,30 @@ button:hover {
     background-color: rgba(0,136,169,0.8);
 }
 
+
 input {
     margin-left: 10px;
     margin-right: 8px;
 }
 
-a {
-    text-decoration: none;
-    color: orange;
-}
+
 
 footer {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin-bottom: 10px;
-
-    margin-left: auto;
-    margin-right: auto;
-    font-family: "Montserrat", sas-serif;
-    font-weight: 500;
-    font-size: 20px;
-    color: green;
-    text-decoration: none;
+    display: flex; 
 }
 
 .about {
-    margin: 0 auto;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-family: "Montserrat", sas-serif;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin:  auto;
     text-align: center;
-    width: 10%;
     text-decoration: none;
     color: #0088A9;
 }
@@ -125,7 +138,7 @@ table {
     margin-left: 1%;
     margin-top: 1%;
     width: 80%;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     margin-left: auto;
     margin-right: auto;
 }
