@@ -23,7 +23,6 @@ export class RestApiService {
 
   receiveAndTestCoinName(tryCoin: string): string {
     let tryCoinURL = 'https://api.coincap.io/v2/assets/' + tryCoin;
-    //console.log(tryCoinURL);
     return tryCoinURL;
   }
   

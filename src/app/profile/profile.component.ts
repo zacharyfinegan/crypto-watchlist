@@ -12,8 +12,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 
 export class ProfileComponent implements OnInit {
+  chosenCoin: string = '';
+  possibleCoinURL: string = '';
   title = "Profile";
-  watchlist = [];
+  stringified = '';
+  localStorageLength = 0;
+  localStorageArray = [];
+  finalArray : any [] = [];
 
   constructor(
     public restApi: RestApiService, 
@@ -22,64 +27,72 @@ export class ProfileComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+      this.returnLocalStorage();
     }
 
-//TABLE CREATION
 //--------------------------
-//ADD COMMAS
   convertMC(str: string): string {
     return Math.round(parseFloat(str) * 100 / 100).toLocaleString();
   }
   convertPrice(str: string): number {
     let num = (parseInt(str));
     num.toFixed(3);
-    console.log(typeof num);
     return num;
   }
 //--------------------------
 
 
 //USER INPUT
-//--------------------------
-//PROCESSES USER INPUT
-    chosenCoin: string = '';
-    possibleCoinURL: string = '';
     onSubmit(f: NgForm) {
       this.chosenCoin = f.value.coin;
       this.possibleCoinURL = this.restApi.receiveAndTestCoinName(this.chosenCoin)
       this.testJSON(this.possibleCoinURL);
-      //this.addToWatchlist(this.possibleCoinURL);
-    }
-//TESTS URL FOR LEGITIMACY AND ADDS TO WATCHLIST
-    testJSON(url: string) {
-      this.http.get(url).toPromise().then(data => {
-        for (let key in data) {
-          if (data.hasOwnProperty("data")) 
-            this.watchlist.push(data[key as never]);
-        }
-          //this.testPersistence();
-          this.printWatchlist();
-      });
-    }    
-//PRINTS COIN NAME TO PAGE
-    watchlistText = '';
-    printWatchlist() {
-      for (let i = 0; i < this.watchlist.length-1; i++) {
-        this.watchlistText = this.watchlist[i]["rank"] + " " + this.watchlist[i]["name"];
-      }
     }
 
-//ATTEMPT AT A TEST FOR LOCAL PERSISTENCE
-    // testPersistence() {
-    //   let value = (localStorage.getItem("key"));
-    //   console.log(value);
-    //   if (value == null) {
-    //     localStorage.setItem("rank", this.watchlistText);
-    //     alert("Hellow");
-    //   } else {
-    //     let value = localStorage.getItem("rank");
-    //     alert(value);
-    //   }
-    // }    
+    testJSON(url: string) {
+        this.http.get(url).toPromise().then(data => {
+            let i = 0; //PREVENTS DUPLICATES
+            for (let key in data) {
+                if (data.hasOwnProperty("data") && i === 0) {
+                    this.stringifyThis(data[key as never]);
+                    this.createLocalWatchlist(this.stringified);   
+                    this.returnLocalStorage();
+                    this.sortLocalWatchlistByRank(this.finalArray);
+                }  
+                i++;
+            }
+        });
+    }    
+    
+//RETURNS STRINGIFIED JSON EXCLUDING TIMESTAMP
+//TIMESTAMP NEEDS TO BE EXCLUDED BC IT OVERLAPS ACTUAL DATA DURING STRINGIFY 2ND ITERATION.
+    stringifyThis(data: any) : any {
+        if (typeof data !== "number") {
+            this.stringified = JSON.stringify(data);
+            return this.stringified;
+        }
+    }
+
 //--------------------------
+    createLocalWatchlist(stringified: string) {
+        if (localStorage.getItem(this.chosenCoin) === null) { 
+            localStorage.setItem(this.chosenCoin, stringified)
+        }
+    }
+
+    returnLocalStorage() : any{
+        for (let [key, value] of Object.entries(localStorage)) {
+            let coin = JSON.parse(localStorage.getItem(key) || '{}');
+            //this.localStorageLength = Object.entries(localStorage).length; //PREVENTS DUPLICATES
+            if (this.finalArray.includes(coin) === false) this.finalArray.push(coin);
+        }
+        return this.finalArray;
+    }
+
+    sortLocalWatchlistByRank(array: object) {
+      console.log(array)
+    }
+    //if (localStorage.getItem(this.chosenCoin) === null) { //PREVENTS DUPLICATES
+    //localStorage.setItem(this.chosenCoin, stringified)
+//-------------------------- 
 }

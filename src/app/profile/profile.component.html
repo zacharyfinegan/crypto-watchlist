@@ -9,11 +9,7 @@
 
         <button>
             Submit 
-            <!-- (click)="onSubmit({chosenCoin})"  
-            name="chosenCoin">
-            Submit -->
         </button>
-        <!-- {{watchlistText}}  -->
     </h2>
 </form>
 
@@ -31,7 +27,7 @@
     </thead>
 
     <tbody>
-        <tr *ngFor="let coin of watchlist">
+        <tr *ngFor="let coin of finalArray">
             <th>{{coin["rank"]}}</th>
             <td>{{coin["name"]}}</td>
             <td>{{coin["symbol"]}}</td>
