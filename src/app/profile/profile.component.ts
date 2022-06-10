@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
+import { compileDeclareClassMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-profile',
@@ -57,7 +58,7 @@ export class ProfileComponent implements OnInit {
                     this.stringifyThis(data[key as never]);
                     this.createLocalWatchlist(this.stringified);   
                     this.returnLocalStorage();
-                    this.sortLocalWatchlistByRank(this.finalArray);
+                    //this.sortLocalWatchlistByRank(this.finalArray);
                 }  
                 i++;
             }
@@ -83,16 +84,32 @@ export class ProfileComponent implements OnInit {
     returnLocalStorage() : any{
         for (let [key, value] of Object.entries(localStorage)) {
             let coin = JSON.parse(localStorage.getItem(key) || '{}');
+            //console.log(coin)
             //this.localStorageLength = Object.entries(localStorage).length; //PREVENTS DUPLICATES
             if (this.finalArray.includes(coin) === false) this.finalArray.push(coin);
         }
         return this.finalArray;
     }
 
-    sortLocalWatchlistByRank(array: object) {
-      console.log(array)
-    }
-    //if (localStorage.getItem(this.chosenCoin) === null) { //PREVENTS DUPLICATES
-    //localStorage.setItem(this.chosenCoin, stringified)
+    // sortLocalWatchlistByRank(objs: object) {
+    //     let sortedByRank
+    //     let values = Object.values(objs);
+    //     // function compare(a, b) {
+    //     //     if (a.rank < b.rank) {
+    //     //         return -1;
+    //     //     } 
+    //     //     else if (a.rank > b.rank) {
+    //     //       return 1;
+    //     //     }
+    //     //     return 0;
+    //     // }
+    //     //objs.sort(compare);
+    // }
+
+    // sortLocalWatchlistByName(objs: object) {
+    //     let sortedByName;
+    //     let values = Object.values(objs);
+    //     //sortedByName = objs.sort(())
+    // }
 //-------------------------- 
 }

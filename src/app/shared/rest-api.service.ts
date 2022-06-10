@@ -16,84 +16,131 @@ import { Coin } from '../shared/coin';
 
 export class RestApiService {
 
-  public apiURL = 'https://api.coincap.io/v2/assets/bitcoin';
-  //public searchedURL = 'https://api.coincap.io/v2/assets/' + search;
-
-  public tryCoinURL = '';
-
-  receiveAndTestCoinName(tryCoin: string): string {
-    let tryCoinURL = 'https://api.coincap.io/v2/assets/' + tryCoin;
-    return tryCoinURL;
-  }
-  
-
   constructor(
     private http: HttpClient,
     ) { }
 
+    public apiURL = 'https://api.coincap.io/v2/assets/';
 
 
-  // httpOptions = {
-  //   headers: new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //   }),
-  // };
+    receiveAndTestCoinName(tryCoin: string): any {
+ 
 
-
-  //   //FETCH COINS LIST...turned http into httpClient. Not sure
-  // // getCoins(): Observable<Coin> {
-  // //   return this.httpClient
-  // //   .get<Coin>(this.apiURL + '/data')
-  // //   .pipe(retry(1), catchError(this.handleError));
-  // // }
-
-  // //TEST
-  // getCoins(): Observable<any> {
-  //   return this.http
-  //   .get<any>(this.apiURL)
-  //   .pipe(retry(1), catchError(this.handleError));
-  // }
-  // // getCoins(): Observable<any> {
-  // //   return this.http
-  // //   .get<any>(this.apiURL)
-  // //   .pipe(retry(1), catchError(this.handleError));
-  // // }
-
-  // //FETCH COIN...turned http into httpClient. Not sure
-  // getCoin(name: any): Observable<Coin> {
-  //   return this.http
-  //   .get<Coin>(this.apiURL + '/data/' + name)
-  //   .pipe(retry(1), catchError(this.handleError));
-  // }
-
-  // //CREATE COIN
-  // pickCoin(coin: any): Observable<Coin> {
-  //   return this.http
-  //   .post<Coin>(
-  //     this.apiURL + '/data',
-  //     JSON.stringify(coin),
-  //     this.httpOptions
-  //   )
-  //   .pipe(retry(1), catchError(this.handleError));
-  // }
-
-
-
-  // handleError(error: any) {
-  //   let errorMessage = '';
-  //   if (error.error instanceof ErrorEvent) {
-  //     errorMessage = error.error.message;
-  //   } else {
-  //     errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-  //   }
-  //   window.alert(errorMessage);
-  //   return throwError(() => {
-  //     return errorMessage;
-  //   });
-  // }
+        let tryCoinURL = 'https://api.coincap.io/v2/assets/' + tryCoin
+//VERY OLD
+        this.http.get(tryCoinURL).toPromise().then(data => {
+            //let i = 0; //PREVENTS DUPLICATES
+            for (let key in data) {
+                if (data.hasOwnProperty("data")) {
+                    //console.log("congrats")
+                } else console.log("oops poops")
+            }
+        });
+        return tryCoinURL;
+    }
 }
 
 
-//HOW TO RUN JSON
-//https://stackoverflow.com/questions/55547572/json-server-is-not-recognized-as-an-internal-or-external-command
-//npx json-server --watch db.json
+
+
+
+
+// export class RestApiService {
+
+//     constructor(
+//       private http: HttpClient,
+//       ) { }
+  
+//       apiURL = 'https://api.coincap.io/v2/assets/';
+//       tryLowerCaseCoin = '';
+//       coinNameArray : string [] = [];
+//       totalNameArray : string [] = [];
+//       tryCoinURL = 'https://api.coincap.io/v2/assets/' + this.tryLowerCaseCoin;
+//       tryCoin = '';
+  
+  
+  
+//       receiveAndTestCoinName(tryCoin: string): any {
+  
+//           // this.http.get(this.apiURL).toPromise().then(data => {
+  
+  
+//           //     let i = 0; //PREVENTS DUPLICATES
+//           //     for (let key in data) { 
+//           //         if (data.hasOwnProperty("data")) {
+//           //             if (i === 0){ 
+//           //                 let coinArray = Object.values(data)[0];
+//           //                 for (let coin in Object.values(coinArray)) {
+//           //                     let coinName = (coinArray[coin]["id"])
+//           //                     this.totalNameArray.push(coinName);
+//           //                 } 
+//           //                 i++;
+//           //             }
+//           //         }
+//           //     }
+  
+//           //     if (this.totalNameArray.includes(this.tryLowerCaseCoin)) {
+//           //         console.log(this.totalNameArray.includes(this.tryLowerCaseCoin))
+//           //         return this.tryCoinURL;
+//           //     } else {
+//           //         console.log(this.totalNameArray.includes(this.tryLowerCaseCoin))
+//           //         alert ("Input a valid cryptocurrency")
+//           //         return;
+//           //     }
+//           //     //console.log(totalNameArray)
+//           // });
+  
+//           // this.http.get(tryCoinURL).toPromise().then(data => {
+          
+//           //     console.log(totalNameArray);
+//           //     console.log(totalNameArray.length)
+//           //     if (totalNameArray.includes(tryLowerCaseCoin)) {
+//           //         console.log(totalNameArray.includes(tryLowerCaseCoin))
+//           //         return tryCoinURL;
+//           //     } else {
+//           //         alert ("Input a valid cryptocurrency")
+//           //         return;
+//           //     }
+//           // });
+  
+  
+//   //OLD
+//           this.http.get(this.tryCoinURL).toPromise().then(data => {
+//               let i = 0; //PREVENTS DUPLICATES
+//               for (let key in data) { 
+//                   if (data.hasOwnProperty("data")) {
+//                       if (i === 0){ 
+//                           let coinArray = Object.values(data)[0];
+//                           for (let coin in Object.values(coinArray)) {
+//                               let coinName = (coinArray[coin]["id"])
+//                               this.coinNameArray.push(coinName);
+//                           }
+//                           if (this.coinNameArray.includes(this.tryLowerCaseCoin)) {
+//                               //console.log(coinNameArray)
+//                               return this.tryCoinURL;
+//                           } else {
+//                               alert ("Input a valid cryptocurrency")
+//                               return;
+//                           }
+//                           i++;
+//                       }
+//                   }   
+//               }
+//               return;
+//           });
+  
+  
+//   //VERY OLD
+//       //     this.http.get(tryCoinURL).toPromise().then(data => {
+//       //         //let i = 0; //PREVENTS DUPLICATES
+//       //         for (let key in data) {
+//       //             if (data.hasOwnProperty("data")) {
+//       //                 //console.log("congrats")
+//       //             } else console.log("oops poops")
+//       //         }
+//       //     });
+//       //     return tryCoinURL;
+  
+  
+//        }
+//   }
