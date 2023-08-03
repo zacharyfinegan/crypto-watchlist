@@ -85,7 +85,7 @@ export class ProfileComponent implements OnInit {
         for (let [key, value] of Object.entries(localStorage)) {
             let coin = JSON.parse(localStorage.getItem(key) || '{}');
             //console.log(coin)
-            //this.localStorageLength = Object.entries(localStorage).length; //PREVENTS DUPLICATES
+            this.localStorageLength = Object.entries(localStorage).length; //PREVENTS DUPLICATES
             if (this.finalArray.includes(coin) === false) this.finalArray.push(coin);
         }
         return this.finalArray;
